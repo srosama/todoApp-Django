@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- Create Filed  -->
+
+<div class="col-md-6 offset-md-3">
+<form method="post">
+     {% csrf_token %}
+    <div class="form-group" style="padding-left:20px ; padding-right:20px ;">
+      <input type="text" class="form-control"  placeholder="Add To List" name="add-to-list">
+    </div>
+    <button type="submit" class="btn btn-primary" style="position: relative; left: 20px; top: 10px;">Add Task</button>
+  </form>
+<br>
+<br>
+<!-- The Added List -->
+{% for i in full_list %}
+<table class="table">
+    <tbody>
+      <tr>
+        <td>{{i}} <a href="{% url 'delete-row' i.id %}">
+            <button type="button" class="btn btn-danger">Delete</button></a>
+           <a href="{% url 'update-row' i.id %}"><button type="button" class="btn btn-primary">Update</button></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endfor %}
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Login  -->
+{% if user.is_authenticated %}
+<h1><a href="{% url 'main-list' %}">Go To The List </a></h1>
+
+{% else%}
+<h3 style="text-align: center;">
+    Start To do now <a href="{% url 'login'%}">Login</a>
+</h3>
+<h1></h1>
+{%endif%}
+
+
+{% endblock content %}
